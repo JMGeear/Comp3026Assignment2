@@ -1,14 +1,9 @@
 ﻿namespace Comp3026Assignment2.Models
 {
     using System.Collections.Generic;
-    using System.Data.Entity;
 
-    public class Order : DbContext
+    public class Order
     {
-        public Order() : base("name=DefaultConnection")
-        {
-        }
-
         public int OrderId { get; set; }
         public string Username { get; set; }
         public string FirstName { get; set; }
@@ -23,7 +18,5 @@
         public decimal Total { get; set; }
         public System.DateTime OrderDate { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
-
-        public virtual DbSet<Order> Orders { get; set; }
     }
 }

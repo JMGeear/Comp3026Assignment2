@@ -5,22 +5,22 @@ namespace Comp3026Assignment2.Migrations
     using System.Data.Entity.Migrations;
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
-
+    
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class AddShoppingCartModels : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
-
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddShoppingCartModels));
+        
         string IMigrationMetadata.Id
         {
-            get { return "201506221704198_InitialCreate"; }
+            get { return "201508021815093_AddShoppingCartModels"; }
         }
-
+        
         string IMigrationMetadata.Source
         {
             get { return null; }
         }
-
+        
         string IMigrationMetadata.Target
         {
             get { return Resources.GetString("Target"); }

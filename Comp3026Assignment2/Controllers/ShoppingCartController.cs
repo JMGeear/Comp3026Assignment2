@@ -34,7 +34,7 @@ namespace Comp3026Assignment2.Controllers
         {
             // Retrieve the Product from the database
             var addedProduct = storeDB.Products
-                .Single(product => product.ProductID == id);
+                .SingleOrDefault(product => product.ProductID == id);
 
             // Add it to the shopping cart
             var cart = ShoppingCart.GetCart(this.HttpContext);
@@ -55,7 +55,7 @@ namespace Comp3026Assignment2.Controllers
 
             // Get the name of the product to display confirmation
             string albumName = storeDB.Carts
-                .Single(item => item.RecordID == id).ProductItem.Name;
+                .SingleOrDefault(item => item.RecordID == id).ProductItem.Name;
 
             // Remove from cart
             int itemCount = cart.RemoveFromCart(id);
