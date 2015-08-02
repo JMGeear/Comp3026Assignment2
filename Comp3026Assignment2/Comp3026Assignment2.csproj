@@ -171,13 +171,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506221704198_InitialCreate.cs" />
-    <Compile Include="Migrations\201506221704198_InitialCreate.Designer.cs">
-      <DependentUpon>201506221704198_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506230257289_storeOwner.cs" />
-    <Compile Include="Migrations\201506230257289_storeOwner.Designer.cs">
-      <DependentUpon>201506230257289_storeOwner.cs</DependentUpon>
+    <Compile Include="Migrations\201508021815093_AddShoppingCartModels.cs" />
+    <Compile Include="Migrations\201508021815093_AddShoppingCartModels.Designer.cs">
+      <DependentUpon>201508021815093_AddShoppingCartModels.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -400,11 +396,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506221704198_InitialCreate.resx">
-      <DependentUpon>201506221704198_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506230257289_storeOwner.resx">
-      <DependentUpon>201506230257289_storeOwner.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508021815093_AddShoppingCartModels.resx">
+      <DependentUpon>201508021815093_AddShoppingCartModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
