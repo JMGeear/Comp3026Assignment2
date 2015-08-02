@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Comp3026Assignment2.Models;
+using Comp3026Assignment2.ViewModels;
+
 
 namespace Comp3026Assignment2.Controllers
 {
