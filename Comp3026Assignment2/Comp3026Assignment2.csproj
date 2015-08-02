@@ -260,6 +260,7 @@
     <Content Include="images\Les Paul.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\SG.jpg" />
+    <Content Include="images\shopping_cart.png" />
     <Content Include="Models\BrandModel.edmx.sql" />
     <Content Include="Models\ContactModel.edmx.sql" />
     <Content Include="Models\ProductModel.edmx.sql" />
