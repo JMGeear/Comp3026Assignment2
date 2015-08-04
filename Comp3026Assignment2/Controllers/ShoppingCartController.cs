@@ -10,7 +10,7 @@ namespace Comp3026Assignment2.Controllers
 {
     public class ShoppingCartController : Controller
     {
-        ShoppingCartEntities storeDB = new ShoppingCartEntities();
+        private VirtuosoModels db = new VirtuosoModels();
 
         // GET: ShoppingCart
         public ActionResult Index()
@@ -33,7 +33,7 @@ namespace Comp3026Assignment2.Controllers
         public ActionResult AddToCart(int id)
         {
             // Retrieve the Product from the database
-            var addedProduct = storeDB.Products
+            var addedProduct = db.Products
                 .SingleOrDefault(product => product.ProductID == id);
 
             // Add it to the shopping cart
@@ -54,8 +54,8 @@ namespace Comp3026Assignment2.Controllers
             var cart = ShoppingCart.GetCart(this.HttpContext);
 
             // Get the name of the product to display confirmation
-            string albumName = storeDB.Carts
-                .SingleOrDefault(item => item.RecordID == id).ProductItem.Name;
+            string albumName = db.Cart
+                .SingleOrDefault(item => item.RecordID == id).Product.Name;
 
             // Remove from cart
             int itemCount = cart.RemoveFromCart(id);

@@ -6,17 +6,18 @@ namespace Comp3026Assignment2.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Product")]
-    public partial class Product
+    public partial class Products
     {
-        public Product()
+        public Products()
         {
-            Cart = new HashSet<Cart>();
-            OrderDetail = new HashSet<OrderDetail>();
+            Orders = new HashSet<Orders>();
         }
 
+        [Key]
         public int ProductID { get; set; }
 
+        [Required]
+        [StringLength(100)]
         public string Name { get; set; }
 
         public decimal Price { get; set; }
@@ -25,8 +26,8 @@ namespace Comp3026Assignment2.Models
 
         public string image { get; set; }
 
-        public virtual ICollection<Cart> Cart { get; set; }
+        public virtual Brands Brands { get; set; }
 
-        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }

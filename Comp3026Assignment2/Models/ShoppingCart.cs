@@ -9,7 +9,7 @@ namespace Comp3026Assignment2.Models
 {
     public partial class ShoppingCart
     {
-        ShoppingCartEntities storeDB = new ShoppingCartEntities();
+        private VirtuosoModels db = new VirtuosoModels();
         string ShoppingCartId { get; set; }
         public const string CartSessionKey = "CartId";
         public static ShoppingCart GetCart(HttpContextBase context)
@@ -23,10 +23,10 @@ namespace Comp3026Assignment2.Models
         {
             return GetCart(controller.HttpContext);
         }
-        public void AddToCart(Product product)
+        public void AddToCart(Products product)
         {
             // Get the matching cart and album instances
-            var cartItem = storeDB.Carts.SingleOrDefault(
+            var cartItem = db.Cart.SingleOrDefault(
                 c => c.CartId == ShoppingCartId
                 && c.ProductId == product.ProductID);
 
@@ -40,7 +40,7 @@ namespace Comp3026Assignment2.Models
                     Count = 1,
                     DateCreated = DateTime.Now
                 };
-                storeDB.Carts.Add(cartItem);
+                db.Cart.Add(cartItem);
             }
             else
             {
@@ -49,12 +49,12 @@ namespace Comp3026Assignment2.Models
                 cartItem.Count++;
             }
             // Save changes
-            storeDB.SaveChanges();
+            db.SaveChanges();
         }
         public int RemoveFromCart(int id)
         {
             // Get the cart
-            var cartItem = storeDB.Carts.Single(
+            var cartItem = db.Cart.Single(
                 cart => cart.CartId == ShoppingCartId
                 && cart.RecordID == id);
 
@@ -69,34 +69,34 @@ namespace Comp3026Assignment2.Models
                 }
                 else
                 {
-                    storeDB.Carts.Remove(cartItem);
+                    db.Cart.Remove(cartItem);
                 }
                 // Save changes
-                storeDB.SaveChanges();
+                db.SaveChanges();
             }
             return itemCount;
         }
         public void EmptyCart()
         {
-            var cartItems = storeDB.Carts.Where(
+            var cartItems = db.Cart.Where(
                 cart => cart.CartId == ShoppingCartId);
 
             foreach (var cartItem in cartItems)
             {
-                storeDB.Carts.Remove(cartItem);
+                db.Cart.Remove(cartItem);
             }
             // Save changes
-            storeDB.SaveChanges();
+            db.SaveChanges();
         }
         public List<Cart> GetCartItems()
         {
-            return storeDB.Carts.Where(
+            return db.Cart.Where(
                 cart => cart.CartId == ShoppingCartId).ToList();
         }
         public int GetCount()
         {
             // Get the count of each item in the cart and sum them up
-            int? count = (from cartItems in storeDB.Carts
+            int? count = (from cartItems in db.Cart
                           where cartItems.CartId == ShoppingCartId
                           select (int?)cartItems.Count).Sum();
             // Return 0 if all entries are null
@@ -107,10 +107,10 @@ namespace Comp3026Assignment2.Models
             // Multiply product price by count of that product to get 
             // the current price for each of those products in the cart
             // sum all product price totals to get the cart total
-            decimal? total = (from cartItems in storeDB.Carts
+            decimal? total = (from cartItems in db.Cart
                               where cartItems.CartId == ShoppingCartId
                               select (int?)cartItems.Count *
-                              cartItems.ProductItem.Price).Sum();
+                              cartItems.Product.Price).Sum();
 
             return total ?? decimal.Zero;
         }
@@ -127,20 +127,20 @@ namespace Comp3026Assignment2.Models
                 {
                     ProductId = item.ProductId,
                     OrderId = order.OrderId,
-                    UnitPrice = item.ProductItem.Price,
+                    UnitPrice = item.Product.Price,
                     Quantity = item.Count
                 };
                 // Set the order total of the shopping cart
-                orderTotal += (item.Count * item.ProductItem.Price);
+                orderTotal += (item.Count * item.Product.Price);
 
-                storeDB.OrderDetails.Add(orderDetail);
+                db.OrderDetail.Add(orderDetail);
 
             }
             // Set the order's total to the orderTotal count
             order.Total = orderTotal;
 
             // Save the order
-            storeDB.SaveChanges();
+            db.SaveChanges();
             // Empty the shopping cart
             EmptyCart();
             // Return the OrderId as the confirmation number
@@ -170,14 +170,14 @@ namespace Comp3026Assignment2.Models
         // be associated with their username
         public void MigrateCart(string userName)
         {
-            var shoppingCart = storeDB.Carts.Where(
+            var shoppingCart = db.Cart.Where(
                 c => c.CartId == ShoppingCartId);
 
             foreach (Cart item in shoppingCart)
             {
                 item.CartId = userName;
             }
-            storeDB.SaveChanges();
+            db.SaveChanges();
         }
     }
 }
