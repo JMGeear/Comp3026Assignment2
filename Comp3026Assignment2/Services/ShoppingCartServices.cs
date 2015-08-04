@@ -1,25 +1,26 @@
-﻿using System;
+﻿using Comp3026Assignment2.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Comp3026Assignment2.Models
+namespace Comp3026Assignment2.Services
 {
-    public partial class ShoppingCart
+    public partial class ShoppingCartService
     {
         private VirtuosoModels db = new VirtuosoModels();
         string ShoppingCartId { get; set; }
         public const string CartSessionKey = "CartId";
-        public static ShoppingCart GetCart(HttpContextBase context)
+        public static ShoppingCartService GetCart(HttpContextBase context)
         {
-            var cart = new ShoppingCart();
+            var cart = new ShoppingCartService();
             cart.ShoppingCartId = cart.GetCartId(context);
             return cart;
         }
         // Helper method to simplify shopping cart calls
-        public static ShoppingCart GetCart(Controller controller)
+        public static ShoppingCartService GetCart(Controller controller)
         {
             return GetCart(controller.HttpContext);
         }

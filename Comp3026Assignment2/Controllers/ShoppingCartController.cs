@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Comp3026Assignment2.Models;
 using Comp3026Assignment2.ViewModels;
+using Comp3026Assignment2.Services;
 
 namespace Comp3026Assignment2.Controllers
 {
@@ -15,7 +16,7 @@ namespace Comp3026Assignment2.Controllers
         // GET: ShoppingCart
         public ActionResult Index()
         {
-            var cart = ShoppingCart.GetCart(this.HttpContext);
+            var cart = ShoppingCartService.GetCart(this.HttpContext);
 
             // Set up our ViewModel
             var viewModel = new ShoppingCartViewModel
@@ -37,7 +38,7 @@ namespace Comp3026Assignment2.Controllers
                 .SingleOrDefault(product => product.ProductID == id);
 
             // Add it to the shopping cart
-            var cart = ShoppingCart.GetCart(this.HttpContext);
+            var cart = ShoppingCartService.GetCart(this.HttpContext);
 
             cart.AddToCart(addedProduct);
 
@@ -51,7 +52,7 @@ namespace Comp3026Assignment2.Controllers
         public ActionResult RemoveFromCart(int id)
         {
             // Remove the item from the cart
-            var cart = ShoppingCart.GetCart(this.HttpContext);
+            var cart = ShoppingCartService.GetCart(this.HttpContext);
 
             // Get the name of the product to display confirmation
             string albumName = db.Cart
@@ -78,7 +79,7 @@ namespace Comp3026Assignment2.Controllers
         [ChildActionOnly]
         public ActionResult CartSummary()
         {
-            var cart = ShoppingCart.GetCart(this.HttpContext);
+            var cart = ShoppingCartService.GetCart(this.HttpContext);
 
             ViewData["CartCount"] = cart.GetCount();
             return PartialView("CartSummary");

@@ -188,7 +188,7 @@
     <Compile Include="Models\Orders.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Products.cs" />
-    <Compile Include="Models\ShoppingCart.cs" />
+    <Compile Include="Services\ShoppingCartServices.cs" />
     <Compile Include="Models\ShoppingCartEntities.cs" />
     <Compile Include="Models\VirtuosoModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
