@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Comp3026Assignment2.Models.Products>
+﻿@model IEnumerable<Comp3026Assignment2.Models.Product>
 
 @{
     ViewBag.Title = "Index";
@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BrandID)
+            @Html.DisplayNameFor(model => model.Brand.Name)
         </th>
         
         <th></th>
@@ -39,7 +39,7 @@
             $@Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BrandID)
+            @Html.DisplayFor(modelItem => item.Brand.Name)
         </td>        
         <td>
             @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.ProductID }, "") | 

@@ -2,15 +2,17 @@ namespace Comp3026Assignment2.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Brands
+    [Table("Brands")]
+    public partial class Brand
     {
-        public Brands()
+        public Brand()
         {
-            Products = new HashSet<Products>();
+            Products = new HashSet<Product>();
         }
 
         [Key]
@@ -18,8 +20,9 @@ namespace Comp3026Assignment2.Models
 
         [Required]
         [StringLength(50)]
+        [DisplayName("Brand Name")]
         public string Name { get; set; }
 
-        public virtual ICollection<Products> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

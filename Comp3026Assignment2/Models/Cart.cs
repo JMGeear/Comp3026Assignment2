@@ -14,7 +14,7 @@ namespace Comp3026Assignment2.Models
 
         public string CartId { get; set; }
 
-        public int ProductId { get; set; }
+        public int ProductID { get; set; }
 
         public decimal Price { get; set; }
 

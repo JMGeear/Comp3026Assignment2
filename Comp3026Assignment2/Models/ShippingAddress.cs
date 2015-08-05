@@ -7,14 +7,16 @@ namespace Comp3026Assignment2.Models
     using System.Data.Entity.Spatial;
 
     [Table("Order")]
-    public partial class Order
+    public partial class ShippingAddress
     {
-        public Order()
+        public ShippingAddress()
         {
             OrderDetail = new HashSet<OrderDetail>();
         }
 
-        public int OrderId { get; set; }
+        [Column("OrderID")]
+        [Key]
+        public int ShippingAddressID { get; set; }
 
         public string Username { get; set; }
 

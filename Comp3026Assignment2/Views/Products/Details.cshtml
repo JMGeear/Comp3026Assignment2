@@ -1,4 +1,4 @@
-﻿@model Comp3026Assignment2.Models.Products
+﻿@model Comp3026Assignment2.Models.Product
 
 @{
     ViewBag.Title = "Details";
@@ -34,10 +34,10 @@
                         $@Html.DisplayFor(model => model.Price)
                     </dd>
                     <dt>
-                        @Html.DisplayNameFor(model => model.BrandID)
+                        @Html.DisplayNameFor(model => model.Brand.Name)
                     </dt>
                     <dd>
-                        @Html.DisplayFor(model => model.BrandID)
+                        @Html.DisplayFor(model => model.Brand.Name)
                     </dd>
                 </dl>
             </div>

@@ -27,7 +27,7 @@ namespace Comp3026Assignment2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Brands brand = db.Brands.Find(id);
+            Brand brand = db.Brands.Find(id);
             if (brand == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace Comp3026Assignment2.Controllers
         [Authorize(Users = MvcApplication.OWNER)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BrandID,Name")] Brands brand)
+        public ActionResult Create([Bind(Include = "BrandID,Name")] Brand brand)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +71,7 @@ namespace Comp3026Assignment2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Brands brand = db.Brands.Find(id);
+            Brand brand = db.Brands.Find(id);
             if (brand == null)
             {
                 return HttpNotFound();
@@ -86,7 +86,7 @@ namespace Comp3026Assignment2.Controllers
         [Authorize(Users = MvcApplication.OWNER)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BrandID,Name")] Brands brand)
+        public ActionResult Edit([Bind(Include = "BrandID,Name")] Brand brand)
         {
             if (ModelState.IsValid)
             {
@@ -106,7 +106,7 @@ namespace Comp3026Assignment2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Brands brand = db.Brands.Find(id);
+            Brand brand = db.Brands.Find(id);
             if (brand == null)
             {
                 return HttpNotFound();
@@ -121,7 +121,7 @@ namespace Comp3026Assignment2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Brands brand = db.Brands.Find(id);
+            Brand brand = db.Brands.Find(id);
             db.Brands.Remove(brand);
             db.SaveChanges();
             return RedirectToAction("Index");

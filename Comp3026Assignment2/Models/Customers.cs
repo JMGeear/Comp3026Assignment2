@@ -6,9 +6,10 @@ namespace Comp3026Assignment2.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Customers
+    [Table("Customers")]
+    public partial class Customer
     {
-        public Customers()
+        public Customer()
         {
             Orders = new HashSet<Orders>();
         }

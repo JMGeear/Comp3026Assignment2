@@ -6,6 +6,7 @@ namespace Comp3026Assignment2.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("Orders")]
     public partial class Orders
     {
         [Key]
@@ -17,8 +18,8 @@ namespace Comp3026Assignment2.Models
 
         public decimal Price { get; set; }
 
-        public virtual Customers Customers { get; set; }
+        public virtual Customer Customers { get; set; }
 
-        public virtual Products Products { get; set; }
+        public virtual Product Products { get; set; }
     }
 }

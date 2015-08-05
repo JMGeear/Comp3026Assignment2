@@ -30,7 +30,7 @@ namespace Comp3026Assignment2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Products product = await db.Products.FindAsync(id);
+            Product product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace Comp3026Assignment2.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<ActionResult> Create([Bind(Include = "ProductID,Name,Price,BrandID,image")] Products product)
+        public async Task<ActionResult> Create([Bind(Include = "ProductID,Name,Price,BrandID,image")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +71,7 @@ namespace Comp3026Assignment2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Products product = await db.Products.FindAsync(id);
+            Product product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -85,7 +85,7 @@ namespace Comp3026Assignment2.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<ActionResult> Edit([Bind(Include = "ProductID,Name,Price,BrandID,image")] Products product)
+        public async Task<ActionResult> Edit([Bind(Include = "ProductID,Name,Price,BrandID,image")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +104,7 @@ namespace Comp3026Assignment2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Products product = await db.Products.FindAsync(id);
+            Product product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -118,7 +118,7 @@ namespace Comp3026Assignment2.Controllers
         [Authorize]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Products product = await db.Products.FindAsync(id);
+            Product product = await db.Products.FindAsync(id);
             db.Products.Remove(product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

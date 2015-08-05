@@ -6,7 +6,8 @@ namespace Comp3026Assignment2.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class AspNetUsers
+    [Table("AspNetUsers")]
+    public partial class AspNetUser
     {
         public string Id { get; set; }
 

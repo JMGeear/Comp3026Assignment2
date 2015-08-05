@@ -6,9 +6,9 @@ namespace Comp3026Assignment2.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Products
+    public partial class Product
     {
-        public Products()
+        public Product()
         {
             Orders = new HashSet<Orders>();
         }
@@ -26,7 +26,7 @@ namespace Comp3026Assignment2.Models
 
         public string image { get; set; }
 
-        public virtual Brands Brands { get; set; }
+        public virtual Brand Brand { get; set; }
 
         public virtual ICollection<Orders> Orders { get; set; }
     }

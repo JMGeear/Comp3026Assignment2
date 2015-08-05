@@ -28,7 +28,7 @@ namespace Comp3026Assignment2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customer = db.Customers.Find(id);
+            Customer customer = db.Customers.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -47,7 +47,7 @@ namespace Comp3026Assignment2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerID,LastName,FirstMidName,Password,PurchaceDate")] Customers customer)
+        public ActionResult Create([Bind(Include = "CustomerID,LastName,FirstMidName,Password,PurchaceDate")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace Comp3026Assignment2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customer = db.Customers.Find(id);
+            Customer customer = db.Customers.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace Comp3026Assignment2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerID,LastName,FirstMidName,Password,PurchaceDate")] Customers customer)
+        public ActionResult Edit([Bind(Include = "CustomerID,LastName,FirstMidName,Password,PurchaceDate")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace Comp3026Assignment2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customer = db.Customers.Find(id);
+            Customer customer = db.Customers.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace Comp3026Assignment2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customers customer = db.Customers.Find(id);
+            Customer customer = db.Customers.Find(id);
             db.Customers.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");

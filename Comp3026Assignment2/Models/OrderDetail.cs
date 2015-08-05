@@ -19,7 +19,7 @@ namespace Comp3026Assignment2.Models
 
         public decimal UnitPrice { get; set; }
 
-        public virtual Order Order { get; set; }
+        public virtual ShippingAddress Order { get; set; }
 
         public virtual Product Product { get; set; }
     }

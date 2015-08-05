@@ -24,19 +24,19 @@ namespace Comp3026Assignment2.Services
         {
             return GetCart(controller.HttpContext);
         }
-        public void AddToCart(Products product)
+        public void AddToCart(Product product)
         {
             // Get the matching cart and album instances
             var cartItem = db.Cart.SingleOrDefault(
                 c => c.CartId == ShoppingCartId
-                && c.ProductId == product.ProductID);
+                && c.ProductID == product.ProductID);
 
             if (cartItem == null)
             {
                 // Create a new cart item if no cart item exists
                 cartItem = new Cart
                 {
-                    ProductId = product.ProductID,
+                    ProductID = product.ProductID,
                     CartId = ShoppingCartId,
                     Count = 1,
                     DateCreated = DateTime.Now
@@ -115,7 +115,7 @@ namespace Comp3026Assignment2.Services
 
             return total ?? decimal.Zero;
         }
-        public int CreateOrder(Order order)
+        public int CreateOrder(ShippingAddress order)
         {
             decimal orderTotal = 0;
 
@@ -126,8 +126,8 @@ namespace Comp3026Assignment2.Services
             {
                 var orderDetail = new OrderDetail
                 {
-                    ProductId = item.ProductId,
-                    OrderId = order.OrderId,
+                    ProductId = item.ProductID,
+                    OrderId = order.ShippingAddressID,
                     UnitPrice = item.Product.Price,
                     Quantity = item.Count
                 };
@@ -145,7 +145,7 @@ namespace Comp3026Assignment2.Services
             // Empty the shopping cart
             EmptyCart();
             // Return the OrderId as the confirmation number
-            return order.OrderId;
+            return order.ShippingAddressID;
         }
         // We're using HttpContextBase to allow access to cookies.
         public string GetCartId(HttpContextBase context)

@@ -12,49 +12,47 @@ namespace Comp3026Assignment2.Models
         {
         }
 
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<Brands> Brands { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Cart> Cart { get; set; }
-        public virtual DbSet<Customers> Customers { get; set; }
-        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<ShippingAddress> ShippingAddesses { get; set; }
         public virtual DbSet<OrderDetail> OrderDetail { get; set; }
-        public virtual DbSet<Orders> Orders { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Brands>()
+            modelBuilder.Entity<Brand>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Brands>()
+            modelBuilder.Entity<Brand>()
                 .HasMany(e => e.Products)
-                .WithRequired(e => e.Brands)
+                .WithRequired(e => e.Brand)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Customers>()
+            modelBuilder.Entity<Customer>()
                 .Property(e => e.LastName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Customers>()
+            modelBuilder.Entity<Customer>()
                 .Property(e => e.FirstMidName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Customers>()
+            modelBuilder.Entity<Customer>()
                 .HasMany(e => e.Orders)
                 .WithRequired(e => e.Customers)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Products>()
+            modelBuilder.Entity<Product>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Products>()
+            modelBuilder.Entity<Product>()
                 .Property(e => e.image)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Products>()
+            modelBuilder.Entity<Product>()
                 .HasMany(e => e.Orders)
                 .WithRequired(e => e.Products)
                 .WillCascadeOnDelete(false);
