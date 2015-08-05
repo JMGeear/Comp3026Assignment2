@@ -31,6 +31,7 @@
         });
     });
 </script>
+<div class="well">
 <h3>
     <em>Review</em> your cart:
 </h3>
@@ -59,7 +60,7 @@
                 @Html.ActionLink(item.Product.Name, "Details", "Products", new { id = item.ProductID }, null)
             </td>
             <td>
-                @item.Product.Price
+                $@item.Product.Price
             </td>
             <td id="item-count-@item.RecordID">
                 @item.Count
@@ -80,7 +81,8 @@
         <td></td>
         <td></td>
         <td id="cart-total">
-            @Model.CartTotal
+            $@Model.CartTotal
         </td>
     </tr>
 </table>
+</div>
