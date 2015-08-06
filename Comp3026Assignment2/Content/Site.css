@@ -44,3 +44,11 @@ textarea {
     color:black;
     /*background-color:black*/
 }
+
+footer {
+   position:absolute;
+   bottom:-50;
+   width:79%;
+   height:60px;   /* Height of the footer */
+   background:#6cf;
+}

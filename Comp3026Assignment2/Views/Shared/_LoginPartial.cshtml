@@ -4,7 +4,7 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
-
+       
     <ul class="nav navbar-nav navbar-right">
         <li><a href="@Url.Action("Index", "ShoppingCart")"><img class="shoppingCart" src="@Url.Content("~/images/shopping_cart.png")" /></a></li>
         <li>
