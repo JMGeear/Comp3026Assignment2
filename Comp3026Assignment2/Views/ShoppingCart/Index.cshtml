@@ -31,56 +31,59 @@
         });
     });
 </script>
-<h3>
-    <em>Review</em> your cart:
-</h3>
-<p class="button">
-    @Html.ActionLink("Checkout", "AddressAndPayment", "Checkout")
-</p>
-<div id="update-message">
-</div>
-<table>
-    <tr>
-        <th>
-            Album Name
-        </th>
-        <th>
-            Price (each)
-        </th>
-        <th>
-            Quantity
-        </th>
-        <th></th>
-    </tr>
-    @foreach (var item in Model.CartItems)
-    {
-        <tr id="row-@item.RecordID">
+<div class="well">
+
+    <h3>
+        <em>Review</em> your cart:
+    </h3>
+    <p>
+        @Html.ActionLink("Checkout", "AddressAndPayment", "Checkout", null, new { @class = "btn btn-default" })
+    </p>
+    <div id="update-message">
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Album Name
+            </th>
+            <th>
+                Price (each)
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.CartItems)
+        {
+            <tr id="row-@item.RecordID">
+                <td>
+                    @Html.ActionLink(item.Product.Name, "Details", "Products", new { id = item.ProductID }, null)
+                </td>
+                <td>
+                    $@item.Product.Price
+                </td>
+                <td id="item-count-@item.RecordID">
+                    @item.Count
+                </td>
+                <td>
+                    <a href="#" class="RemoveLink"
+                       data-id="@item.RecordID">
+                        Remove
+                        from cart
+                    </a>
+                </td>
+            </tr>
+        }
+        <tr>
             <td>
-                @Html.ActionLink(item.Product.Name, "Details", "Products", new { id = item.ProductID }, null)
+                Total
             </td>
-            <td>
-                @item.Product.Price
-            </td>
-            <td id="item-count-@item.RecordID">
-                @item.Count
-            </td>
-            <td>
-                <a href="#" class="RemoveLink"
-                   data-id="@item.RecordID">
-                    Remove
-                    from cart
-                </a>
+            <td></td>
+            <td></td>
+            <td id="cart-total">
+                $@Model.CartTotal
             </td>
         </tr>
-    }
-    <tr>
-        <td>
-            Total
-        </td>
-        <td></td>
-        <td></td>
-        <td id="cart-total">
-            @Model.CartTotal
-        </td>
-    </tr>
-</table>
+    </table>
+</div>
