@@ -14,9 +14,9 @@ namespace Comp3026Assignment2.App_Start
         public static void Register(HttpConfiguration config)
         {
             config.Routes.MapHttpRoute(
-                name: "Product",
+                name: "VApi",
                 routeTemplate: "api/product/{id}",
-                defaults: new { controller = "VApiController", id = RouteParameter.Optional });
+                defaults: new { controller = "VApi", id = RouteParameter.Optional });
         }
     }
 }
